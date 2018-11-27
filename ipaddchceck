@@ -1,0 +1,13 @@
+:local HOST "192.168.88.253"
+:local PINGCOUNT "5"
+:local DELAY "3s"
+:local ADMINMAIL "alarmmasterjs@gmail.com"
+
+:if ([/ping $HOST interval=1 count=$PINGCOUNT] = 0) do={
+:log error "IP $HOST neodpoveda"
+
+/tool e-mail send to=$ADMINMAIL subject="ip $HOST neodpoveda" body="ip addresa $HOST je nedostupna" start-tls=yes
+} else {
+
+:log warning "HOST $HOST ping is ok, no need to take any action ...";
+}
