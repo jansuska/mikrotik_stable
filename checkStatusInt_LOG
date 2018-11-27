@@ -1,0 +1,21 @@
+#ether1 = wan
+#ether5 = host
+
+
+:do {
+:local status
+:set status [/interface get [/interface find name="ether1"] running]
+:if ($status=true) do={
+:log warning ("ether1 is running")}
+:if ($status=false) do={
+:log warning ("ether1 is no run")
+}}
+
+:do {
+:local status
+:set status [/interface get [/interface find name="ether5"] running]
+:if ($status=true) do={
+:log warning ("ether5 is running")}
+:if ($status=false) do={
+:log warning ("ether5 is no run")
+}}
