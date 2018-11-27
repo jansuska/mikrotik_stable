@@ -1,0 +1,14 @@
+:local ADMINMAIL "alarmmasterjs@gmail.com"
+:local inter "ether1"
+
+:local status
+:set status [/interface get [/interface find name="ether1"] running]
+
+
+:if ($status=true) do={
+/tool e-mail send to=$ADMINMAIL subject="int neodpoveda" body="Interface $inter  je dostupny  $[/system clock get date]" start-tls=yes
+}
+
+:if ($status=false) do={
+/tool e-mail send to=$ADMINMAIL subject="int odpoveda" body="Interface $inter je nedostupny $[/system clock get date]" start-tls=yes
+}
