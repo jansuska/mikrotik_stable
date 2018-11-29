@@ -1,10 +1,10 @@
 
 :local HOST "8.8.8.8"
 :local PINGCOUNT "1"
-:local DELAY "1s"
+
 :local adminMail "alarmmasterjs@gmail.com"
 
-:local dhcpleasefile "/ip dhcp-server lease print"
+
 :local lease "pokusny.txt"
 :local lease1 "pokusnydetail.txt"
 :local body "subor s obsahom dhcp lease v prilohe z dňa $[/system clock get date] v čase $[/system clock get time]"
@@ -17,7 +17,7 @@
 
 
 
-
+#overenie pripojenia
 :if ([/ping $HOST interval=1 count=$PINGCOUNT] = 0) do={
 
 :log error "file sa nepodarilo odoslat, $HOST nedostupny"

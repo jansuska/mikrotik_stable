@@ -1,8 +1,8 @@
 #ping na osmicky
 
 :local HOST "8.8.8.8"
-:local PINGCOUNT "5"
-:local DELAY "3s"
+:local PINGCOUNT "3"
+
 :local ADMINMAIL "alarmmasterjs@gmail.com"
 
 :if ([/ping $HOST interval=1 count=$PINGCOUNT] = 0) do={
