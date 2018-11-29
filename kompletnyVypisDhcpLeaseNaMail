@@ -1,0 +1,45 @@
+
+:local HOST "8.8.8.8"
+:local PINGCOUNT "1"
+:local DELAY "1s"
+:local adminMail "alarmmasterjs@gmail.com"
+
+:local dhcpleasefile "/ip dhcp-server lease print"
+:local lease "pokusny.txt"
+:local lease1 "pokusnydetail.txt"
+:local body "subor s obsahom dhcp lease v prilohe z dňa $[/system clock get date] v čase $[/system clock get time]"
+
+
+
+# vytvotenie a zapisanie do suboru
+/ip dhcp-server lease print file=$lease
+/ip dhcp-server lease print detail file=$lease1
+
+
+
+
+:if ([/ping $HOST interval=1 count=$PINGCOUNT] = 0) do={
+
+:log error "file sa nepodarilo odoslat, $HOST nedostupny"
+
+} else {
+#odoslanie
+/tool e-mail send to=$adminMail subject="dhcpleasefile"      body=$body file="$lease,$lease1" start-tls=yes
+
+#oneskorenie
+:delay 10s
+
+#zmazanie zalohy
+/file remove $lease
+/file remove $lease1
+
+#oneskorenie
+:delay 10s
+
+
+
+
+
+#zapisanie do log
+:log info ("dhcpleasefile script prebehol")
+}
