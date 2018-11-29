@@ -1,14 +1,29 @@
+#vytvorenie zalohy, odoslanie na mail, zmazanie zalohy, zapisanie do log
+
+
 :local adminMail "alarmmasterjs@gmail.com"
 
 :local backupfile "zalohamoja"
 :local rscfile "zaloharscmoja"
-:local body "subory zalohy v prilohe z dňa $[/system clock get date] v čase $[/system clock get time]"
+:local body "subory zalohy v prilohe z dna $[/system clock get date] v case $[/system clock get time]"
 #ulozenie
 /system backup save name=$backupfile
 
 #ezport backupu do file rsc
 /export file=$rscfile
 
+#ping na osmicky
+
+:local HOST "8.8.8.8"
+:local PINGCOUNT "5"
+:local DELAY "3s"
+:local ADMINMAIL "alarmmasterjs@gmail.com"
+
+:if ([/ping $HOST interval=1 count=$PINGCOUNT] = 0) do={
+
+:log error "zalohu sa nepodarilo odoslat, $HOST nedostupny"
+
+} else {
 #odoslanie
 /tool e-mail send to=$adminMail subject="backup"      body=$body file="$backupfile,$rscfile" start-tls=yes
 
@@ -24,3 +39,4 @@
 
 #zapisanie do log
 :log info ("backup script prebehol")
+}

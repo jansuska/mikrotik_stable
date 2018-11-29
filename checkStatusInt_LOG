@@ -8,16 +8,16 @@
 :local status
 :set status [/interface get [/interface find name="ether1"] running]
 :if ($status=true) do={
-:log warning ("ether1 is running")}
+:log info ("ether1 is up")}
 :if ($status=false) do={
-:log warning ("ether1 is no run")
+:log warning ("ether1 is down")
 }}
 
 :do {
 :local status
 :set status [/interface get [/interface find name="ether5"] running]
 :if ($status=true) do={
-:log warning ("ether5 is running")}
+:log info ("ether5 is up")}
 :if ($status=false) do={
-:log warning ("ether5 is no run")
+:log warning ("ether5 is down")
 }}

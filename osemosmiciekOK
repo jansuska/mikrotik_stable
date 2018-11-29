@@ -8,8 +8,8 @@
 :if ([/ping $HOST interval=1 count=$PINGCOUNT] = 0) do={
 
 :log error "$HOST NOK"
-/tool e-mail send to=$ADMINMAIL subject="ip $HOST neodpoveda" body="ip addresa $HOST je nedostupna $[/system clock get date] $[/system clock get time]" start-tls=yes
+
 } else {
-:log warning "$HOST OK"
+:log info "$HOST OK"
 /tool e-mail send to=$ADMINMAIL subject="ip $HOST je dostupna" body="ip addresa $HOST je dostupna $[/system clock get date] $[/system clock get time]" start-tls=yes
 }
