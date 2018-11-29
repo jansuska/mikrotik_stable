@@ -1,0 +1,26 @@
+:local adminMail "alarmmasterjs@gmail.com"
+
+:local backupfile "zalohamoja"
+:local rscfile "zaloharscmoja"
+:local body "subory zalohy v prilohe z dňa $[/system clock get date] v čase $[/system clock get time]"
+#ulozenie
+/system backup save name=$backupfile
+
+#ezport backupu do file rsc
+/export file=$rscfile
+
+#odoslanie
+/tool e-mail send to=$adminMail subject="backup"      body=$body file="$backupfile,$rscfile" start-tls=yes
+
+#oneskorenie
+:delay 10s
+
+#zmazanie zalohy
+/file remove $backupfile
+/file remove $rscfile
+
+#oneskorenie
+:delay 10s
+
+#zapisanie do log
+:log info ("backup script prebehol")
