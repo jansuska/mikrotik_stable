@@ -1,0 +1,23 @@
+#kontrola vytazenia dhcp pool
+
+:local adminMail "alarmmasterjs@gmail.com"
+:local maxNumber 1
+:local numberOFpool [/ip dhcp-server lease print count-only]
+
+
+
+:if ([$numberOFpool]>=[$maxNumber]) do {
+:log warning ("skript prebehol OK, dhcp pool je pretazeny")
+/tool e-mail send to=$adminMail subject="takmer vycerpany dhcp pool" body="
+Dna $[/system clock get date] v case $[/system clock get time]
+sa takmer vycerpadl dhcp pool pretoze prekrocil cislo $maxNumber" start-tls=yes
+}
+
+
+:if ([$numberOFpool]<[$maxNumber]) do {
+:log info ("skript prebehol OK, dhcp pool nie je pretazeny")
+/tool e-mail send to=$adminMail subject="status dhcp pool" body="
+Dna $[/system clock get date] v case $[/system clock get time]
+je z dhcp pool vycerpanych  $numberOFpool adries" start-tls=yes
+
+}
