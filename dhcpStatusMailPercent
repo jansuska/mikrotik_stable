@@ -1,0 +1,35 @@
+#kontrola vytazenia dhcp pool
+
+:local adminMail "alarmmasterjs@gmail.com"
+:local numberOfPool [/ip dhcp-server lease print count-only where server=defconf]
+:local maxNumber 1
+
+#podmienka pre overenie vytazenia nad 90%
+:if ((($numberOfPool)/($maxNumber)*100)>(90)) do {
+:log warning ("dhcp pool je vytazeny nad 90%")
+/tool e-mail send to=$adminMail subject="dhcp pool je vytazeny nad 90%" body="
+Dna $[/system clock get date] v case $[/system clock get time]
+dhcp pool je vytazeny nad 90%" start-tls=yes
+} else {
+
+    #podmienka pre overenie vytazenia nad 75%
+    :if ((($numberOfPool)/($maxNumber)*100)>(75)) do {
+    :log warning ("dhcp pool je vytazeny nad 75%")
+    /tool e-mail send to=$adminMail subject="dhcp pool je vytazeny nad 75%" body="
+    Dna $[/system clock get date] v case $[/system clock get time]
+    dhcp pool je vytazeny nad 75%" start-tls=yes
+    } else {
+
+        #podmienka pre overenie vytazenia nad 50%
+        :if ((($numberOfPool)/($maxNumber)*100)>(50)) do {
+        :log warning ("dhcp pool je vytazeny nad 50%")
+        /tool e-mail send to=$adminMail subject="dhcp pool je vytazeny nad 50%" body="
+        Dna $[/system clock get date] v case $[/system clock get time]
+        dhcp pool je vytazeny nad 50%" start-tls=yes
+        } else {
+
+                #podmienka ktory vykona ak nevykonal ziadnu predchadzajucu
+                :log info ("dhcp pool OK")
+                }
+            }
+        }
