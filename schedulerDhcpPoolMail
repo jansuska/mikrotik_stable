@@ -1,0 +1,5 @@
+#vytvorenie schedulera pomocou scriptu pre spustanie scriptu dhcpPoolMail
+
+/system scheduler
+
+add interval=12h name=shedulerDhcpPoolMail on-event=dhcpPoolMail policy=ftp,reboot,read,write,policy,test,password,sniff,sensitive,romon start-date=dec/05/2018 start-time=00:02:00

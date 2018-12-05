@@ -1,0 +1,5 @@
+#vytvorenie schedulera pomocou scriptu pre spustanie backupu
+
+/system scheduler
+
+add interval=1w name=shedulerBackup on-event=backupMail policy=ftp,reboot,read,write,policy,test,password,sniff,sensitive,romon start-date=dec/05/2018 start-time=00:45:00
