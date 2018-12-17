@@ -21,17 +21,17 @@ Systémovou súčasťou je funkcia LOG. Táto funkcnia napíše správu do syst�
 :log info ("tento text uvidim v log-och")
 ## Tool mail
 Pred odosielanim mailov zo skriptu je nutné nastaviť mailového klienta v miktorik routre v časti tools email kde sú požadované nasledujúce parametre.
-#### Server
+#### server
 - ip adresa servere. Túto adresu zistíme vyhladaním na internete alebo jednoducho ping-om na adresu v mojom prípade smtp.gmail.com kde vráti adresu: 64.233.167.109
-#### Port
+#### port
 - port na ktorom pracuje smtp protokoloch nášho klienta, jednoducho vyhľadám na internete. V našom prípade zadáme číslo portu 587
-#### Start tls
+#### start tls
 - jedná sa o formu zabezpečenia pre maily, pri konfigurácii máme na výber yes, tls only, no.
-#### From
+#### from
 - toto pole vyplníme našou mailovou adresou
-#### User
+#### user
 - zvolíme si ľubovolný používaťelský názov, z pravidla časť mailovej adresy pred znakom @
-#### Password
+#### password
 - toto pole vyplníme heslom našej mailovej schránky
 
 Po vyplnení týchto atribútov možeme použit tool mail v skripte a tak zaslať mail.
@@ -45,7 +45,7 @@ Po vyplnení týchto atribútov možeme použit tool mail v skripte a tak zasla�
 -  predmet správy vyplníme textom ktorý chceme vidieť v predmete
 #### body
 - telo mailu vyplníme textom ktorý chceme vidieť v tele prípadne použijeme ďaľšie funkcie
-#### Start tls
+#### start tls
 - jedná sa o formu zabezpečenia pre maily, ktorú si želáme preto zvolíme yes
 
 #### Formát zápisu premenných
