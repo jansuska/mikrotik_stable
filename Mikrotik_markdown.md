@@ -1,8 +1,3 @@
-#https://dillinger.io/
-#https://gist.github.com/jonschlinkert/5854601
-
-
-
 #   Projekt z programovania
 #   Návrh a realizácia monitorovacích skriptov v MikroTik RouterOS
 
