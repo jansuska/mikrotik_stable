@@ -14,7 +14,7 @@ Vytvorené scripty:
   - script scheduler, ktorý po vložení do mikrotik terminálu vytvorí udalosť scheduler
 
 ## Úvod
-Moja práca na tomto projekte začala oboznámením sa s prostredím mikrotik. Pretože som sa s ním doposiaľ nestretol. To obnášalo následné študovanie mikrotik skript, pretože mi bol cudzí, kedže to bola pre mňa úplne nová vec a tak som musel začat s vypracovaním tejto práce od úplného začiatku. Moje prvé skripty boli jednoduché ako je ping na danú IP adresu či vo Wan alebo Lan sieti. Ďalej kontrola interface. Následne som začal skúmať zapisovanie do LOG -ov systému mikrotik a odosielanie infromácii na e-mail. Pri čom som používal rôzne súčasti mikrotik systému, ktoré bližšie popíšem.
+Moja práca na tomto projekte začala oboznámením sa s prostredím mikrotik. Pretože som sa s ním doposiaľ nestretol. To obnášalo následné študovanie mikrotik skript, pretože mi bol cudzí, kedže to bola pre mňa úplne nová vec a tak som musel začat s vypracovaním tejto práce od úplného začiatku. Moje prvé skripty boli jednoduché ako je ping na danú IP adresu či vo Wan alebo Lan sieti. Ďalej kontrola interface. Následne som začal skúmať zapisovanie do LOG -ov systému mikrotik a odosielanie infromácii na e-mail, pričom som používal rôzne súčasti mikrotik systému, ktoré bližšie popíšem.
 ## Log
 Systémovou súčasťou je funkcia LOG. Táto funkcnia napíše správu do systémového denníka. Danú spávu môžeme označit podľa priority ako sú napríklad info, warning, error. Tieto informácie sú v sýstémovom denníku odlíšené podľa priority tiež farbou textu a to nasledovne: info - čierna, warning - modrá, error červená.
 ### Príklad kódu zo sckriptu:
