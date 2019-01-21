@@ -6,21 +6,21 @@
 [![mikrotik.wiki](https://wiki.mikrotik.com/images/thumb/1/18/Ros.png/48px-Ros.png)](https://wiki.mikrotik.com/wiki/Main_Page)
 
 Zadanie práce:
-## Oboznámiť sa s programovacím jazykom mikrotik skript, naprogramovať funkčný a zároveň užitočný mikrotik skript, zdokumentovať svoju prácu formou príručky a prezentácie.
+## Oboznámiť sa s programovacím jazykom MikroTik skript, naprogramovať funkčný a zároveň užitočný MikroTik skript, zdokumentovať svoju prácu formou príručky a prezentácie.
 
 Vytvorené scripty:
-  - Záloha nastavenia mikrotik routra do suboru .bat .rsc a odoslanie ako prilohu e-mailu
+  - Záloha nastavenia MikroTik routra do suboru .bat .rsc a odoslanie ako prilohu e-mailu
   - Sledovanie zaťaženia DHCP pool-u a posielat upozornenie o naplnení na e-mail
-  - script scheduler, ktorý po vložení do mikrotik terminálu vytvorí udalosť scheduler
+  - script scheduler, ktorý po vložení do MikroTik terminálu vytvorí udalosť scheduler
 
 ## Úvod
-Moja práca na tomto projekte začala oboznámením sa s prostredím mikrotik. Pretože som sa s ním doposiaľ nestretol. To obnášalo následné študovanie mikrotik skript, pretože mi bol cudzí, kedže to bola pre mňa úplne nová vec a tak som musel začat s vypracovaním tejto práce od úplného začiatku. Moje prvé skripty boli jednoduché ako je ping na danú IP adresu či vo Wan alebo Lan sieti. Ďalej kontrola interface. Následne som začal skúmať zapisovanie do LOG -ov systému mikrotik a odosielanie infromácii na e-mail, pričom som používal rôzne súčasti mikrotik systému, ktoré bližšie popíšem.
+Moja práca na tomto projekte začala oboznámením sa s prostredím MikroTik. Pretože som sa s ním doposiaľ nestretol. To obnášalo následné študovanie MikroTik skript, pretože mi bol cudzí, kedže to bola pre mňa úplne nová vec a tak som musel začat s vypracovaním tejto práce od úplného začiatku. Moje prvé skripty boli jednoduché ako je ping na danú IP adresu či vo Wan alebo Lan sieti. Ďalej kontrola interface. Následne som začal skúmať zapisovanie do LOG -ov systému MikroTik a odosielanie infromácii na e-mail, pričom som používal rôzne súčasti MikroTik systému, ktoré bližšie popíšem.
 ## Log
 Systémovou súčasťou je funkcia LOG. Táto funkcnia napíše správu do systémového denníka. Danú spávu môžeme označit podľa priority ako sú napríklad info, warning, error. Tieto informácie sú v sýstémovom denníku odlíšené podľa priority tiež farbou textu a to nasledovne: info - čierna, warning - modrá, error červená.
 ### Príklad kódu zo sckriptu:
 :log info ("tento text uvidim v log-och")
 ## Tool mail
-Pred odosielanim e-mailov zo skriptu je nutné nastaviť e-mailového klienta v mikrotik routre v časti tools e-mail kde sú požadované nasledujúce parametre.
+Pred odosielanim e-mailov zo skriptu je nutné nastaviť e-mailového klienta v MikroTik routre v časti tools e-mail kde sú požadované nasledujúce parametre.
 #### server
 - ip adresa servere. Túto adresu zistíme vyhľadaním na internete alebo jednoducho ping-om na adresu v mojom prípade smtp.gmail.com kde vráti adresu: 64.233.167.109
 #### port
@@ -38,7 +38,7 @@ Po vyplnení týchto atribútov môžeme použiť tool mail v skripte, a tak zas
 ### Príklad kódu zo sckriptu:
 /tool e-mail send to=meno@server.com subject="predmet spravy" body="telo mailu" start-tls=yes
 #### tool e-mail
-- funkcnia mikrotik systému, ktorý spúšťame v skripte
+- funkcnia MikroTik systému, ktorý spúšťame v skripte
 #### send to
 - e-mailová adresa, na ktorú chceme d-mail odoslať, sa môže zhodovať s e-mailovou adresou, z ktorej posielame (adresa vyplnená v tool mail)
 #### subjest
